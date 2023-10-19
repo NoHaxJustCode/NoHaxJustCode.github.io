@@ -59,10 +59,6 @@ section h2 {
     height: 60px;
 }
 
-.project {
-    margin-bottom: 30px;
-}
-
 .project img {
     width: 100%;
     height: auto;
@@ -70,3 +66,38 @@ section h2 {
 }
 
 /* Add more styles as needed */
+/* Add these styles for the Project section */
+#portfolio {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#portfolio h2 {
+    color: #333;
+    text-align: center;
+}
+
+.project {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.project h3 {
+    color: #333;
+}
+
+.project p {
+    color: #555;
+}
+
+/* Add some spacing between projects */
+.project:not(:last-child) {
+    margin-bottom: 40px;
+}
