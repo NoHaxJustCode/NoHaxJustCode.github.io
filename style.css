@@ -138,3 +138,20 @@ section h2 {
 .project:not(:last-child) {
     margin-bottom: 40px;
 }
+
+#Internship .internship {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#Internship .internship h3 {
+    color: #333;
+}
+
+#Internship .internship p {
+    color: #555;
+}
