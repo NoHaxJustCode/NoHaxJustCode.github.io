@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - Web Developer</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const scrollLinks = document.querySelectorAll('a[href^="#"]');
+            scrollLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -75,7 +89,7 @@
         <p>Let's connect! Feel free to reach out to me via email: avinash.paluri@yahoo.com</p>
         <h2>Resume</h2>
         <p>Download my resume to learn more about my skills and experiences.</p>
-        <a href="/Users/avinashpaluri/Documents/Code/PersonalWebsite/NoHaxJustCode.github.io/finalResume.pdf" download="AvinashPaluri_Resume.pdf" class="resume-button">Download Resume</a>
+        <a href="finalResume.pdf" download="AvinashPaluri_Resume.pdf" class="resume-button">Download Resume</a>
     </section>
 </body>
 </html>
