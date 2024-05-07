@@ -1,3 +1,3 @@
 # Avinash Paluri
 ## Student At Rutgers University-NB
-### Working Towards B.S in Computer Science
+### Working Towards B.S in Computer Science and B.A in Data Science
