@@ -10,7 +10,7 @@
         .container {
             max-width: 800px;
             padding: 0 20px;
-        }
+        } 
 
         /* Rescale images */
         .technology img,
@@ -41,6 +41,10 @@
         <nav class="navbar">
             <div class="container">
                 <h1 class="logo">Avinash Paluri</h1>
+                <input type="checkbox" id="nav-toggle" class="nav-toggle">
+                <label for="nav-toggle" class="nav-toggle-label">
+                    <span></span>
+                </label>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#technologies">Technologies</a></li>
@@ -56,172 +60,150 @@
                 <div class="hero-content">
                     <h1 class="hero-title">Web Developer</h1>
                     <p class="hero-subtitle">Crafting digital experiences that make a difference.</p>
-                    <a href="#contact" class="btn">Get In Touch</a>
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <section id="about" class="section">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>Welcome to my personal website! I am a passionate software developer with expertise in various technologies, frameworks, and tools.</p>
-        </div>
-    </section>
+    <main>
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-text">Welcome to my personal website! I am a passionate software developer with expertise in various technologies, frameworks, and tools. My goal is to create innovative and efficient solutions that make a positive impact.</p>
+            </div>
+        </section>
 
-    <section id="technologies" class="section">
-        <div class="container">
-            <h2>Technologies</h2>
-            <!-- Technologies content -->
-    
-            <!-- HTML5 -->
-            <div class="technology">
-                <img src="images/html5-icon.png" alt="HTML5 Icon">
-                <h3>HTML5</h3>
-                <p>I use the latest HTML5 standards to create semantic and responsive web pages.</p>
+        <section id="technologies" class="section">
+            <div class="container">
+                <h2 class="section-title">Technologies</h2>
+                <div class="tech-grid">
+                    <div class="technology">
+                        <img src="images/html5-icon.png" alt="HTML5 Icon">
+                        <h3>HTML5</h3>
+                        <p>Creating semantic and responsive web pages using the latest HTML5 standards.</p>
+                    </div>
+                    <div class="technology">
+                        <img src="images/css3-icon.png" alt="CSS3 Icon">
+                        <h3>CSS3</h3>
+                        <p>Crafting engaging user experiences through advanced styling techniques.</p>
+                    </div>
+                    <div class="technology">
+                        <img src="images/js-icon.png" alt="JavaScript Icon">
+                        <h3>JavaScript</h3>
+                        <p>Building interactive and dynamic web applications with modern JavaScript.</p>
+                    </div>
+                    <div class="technology">
+                        <img src="images/react-icon.png" alt="React Icon">
+                        <h3>React.js</h3>
+                        <p>Developing efficient and modern user interfaces with React.js.</p>
+                    </div>
+                    <div class="technology">
+                        <img src="images/nodejs-icon.png" alt="Node.js Icon">
+                        <h3>Node.js</h3>
+                        <p>Creating scalable and fast server-side applications with Node.js.</p>
+                    </div>
+                    <div class="technology">
+                        <img src="images/mongodb-icon.png" alt="MongoDB Icon">
+                        <h3>MongoDB</h3>
+                        <p>Implementing flexible NoSQL database solutions with MongoDB.</p>
+                    </div>
+                    <div class="technology">
+                        <img src="images/python-icon.png" alt="Python Icon">
+                        <h3>Python</h3>
+                        <p>Developing versatile applications and scripts using Python.</p>
+                    </div>
+                    <div class="technology">
+                        <img src="images/docker-icon.png" alt="Docker Icon">
+                        <h3>Docker</h3>
+                        <p>Containerizing applications for seamless deployment and scalability.</p>
+                    </div>
+                    <div class="technology">
+                        <img src="images/git-icon.png" alt="Git Icon">
+                        <h3>Git</h3>
+                        <p>Managing version control and facilitating collaboration with Git.</p>
+                    </div>
+                    <div class="technology">
+                        <img src="images/aws-icon.png" alt="AWS Icon">
+                        <h3>AWS</h3>
+                        <p>Deploying and managing applications in the cloud with AWS.</p>
+                    </div>
+                </div>
             </div>
-        
-            <!-- CSS3 -->
-            <div class="technology">
-                <img src="images/css3-icon.png" alt="CSS3 Icon">
-                <h3>CSS3</h3>
-                <p>Styling is not just about appearance; it's about creating an engaging user experience.</p>
-            </div>
-        
-            <!-- JavaScript -->
-            <div class="technology">
-                <img src="images/js-icon.png" alt="JavaScript Icon">
-                <h3>JavaScript</h3>
-                <p>Building interactive and dynamic web applications with JavaScript is my forte.</p>
-            </div>
-        
-            <!-- React -->
-            <div class="technology">
-                <img src="images/react-icon.png" alt="React Icon">
-                <h3>React.js</h3>
-                <p>Creating modern and efficient user interfaces with the power of React.js.</p>
-            </div>
-        
-            <!-- Node.js -->
-            <div class="technology">
-                <img src="images/nodejs-icon.png" alt="Node.js Icon">
-                <h3>Node.js</h3>
-                <p>Building scalable and fast server-side applications with Node.js.</p>
-            </div>
-        
-            <!-- MongoDB -->
-            <div class="technology">
-                <img src="images/mongodb-icon.png" alt="MongoDB Icon">
-                <h3>MongoDB</h3>
-                <p>Utilizing MongoDB for efficient and flexible NoSQL database solutions.</p>
-            </div>
-        
-            <!-- Python -->
-            <div class="technology">
-                <img src="images/python-icon.png" alt="Python Icon">
-                <h3>Python</h3>
-                <p>Developing versatile applications and scripts with the power of Python.</p>
-            </div>
-        
-            <!-- Docker -->
-            <div class="technology">
-                <img src="images/docker-icon.png" alt="Docker Icon">
-                <h3>Docker</h3>
-                <p>Containerizing applications for seamless deployment and scalability with Docker.</p>
-            </div>
-        
-            <!-- Git -->
-            <div class="technology">
-                <img src="images/git-icon.png" alt="Git Icon">
-                <h3>Git</h3>
-                <p>Version control and collaboration made easy with Git.</p>
-            </div>
-        
-            <!-- AWS -->
-            <div class="technology">
-                <img src="images/aws-icon.png" alt="AWS Icon">
-                <h3>AWS</h3>
-                <p>Deploying and managing applications in the cloud with Amazon Web Services (AWS).</p>
-            </div>
-        
-            <!-- Add more technologies as needed -->
-        </div>
-    </section>
+        </section>
 
-    <section id="projects" class="section">
-        <div class="container">
-            <h2>Projects</h2>
-            <!-- Projects content -->
-        
-            <!-- Slickdeals Web Scraper -->
-            <div class="project">
-                <h3>Slickdeals Web Scraper</h3>
-                <p>Developed a highly efficient web scraping application using Python, Pandas, and BeautifulSoup to systematically extract and organize the top 50 deals from the Slickdeals website. Designed data processing pipelines to clean and structure the collected information, ensuring its usability and relevance for further analysis. Implemented automation techniques to regularly update the deal database, keeping it current and valuable for users.</p>
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+                <div class="project-grid">
+                    <div class="project">
+                        <h3>Slickdeals Web Scraper</h3>
+                        <p>A Python-based web scraping application that extracts and organizes the top 50 deals from Slickdeals, featuring data processing pipelines and automation techniques.</p>
+                    </div>
+                    <div class="project">
+                        <h3>University Registration System</h3>
+                        <p>A comprehensive registration system developed with Java, SQL, HTML, and JavaScript, featuring an intuitive front-end and robust back-end with MySQL integration.</p>
+                    </div>
+                    <div class="project">
+                        <h3>Meal Planner App</h3>
+                        <p>An iOS app built with Swift and SwiftUI, integrating Google Firebase for real-time collaboration and data synchronization in meal planning.</p>
+                    </div>
+                    <div class="project">
+                        <h3>Personal Portfolio Website</h3>
+                        <p>A React-based portfolio website showcasing skills, projects, and achievements, with responsive design and interactive features.</p>
+                    </div>
+                </div>
             </div>
-    
-            <!-- University Registration System -->
-            <div class="project">
-                <h3>University Registration System</h3>
-                <p>Led the development of a comprehensive University Registration System using Java, SQL, HTML, and JavaScript. Designed an intuitive and user-friendly front-end interface using HTML and JavaScript, enhancing the registration experience for students. Implemented a robust back-end system in Java, leveraging MySQL for efficient database management, ensuring seamless data storage and retrieval. Utilized Maven for project build automation and Git for version control, facilitating collaboration among the project team and ensuring project scalability and maintainability.</p>
-            </div>
-    
-            <!-- Meal Planner App -->
-            <div class="project">
-                <h3>Meal Planner App</h3>
-                <p>Developed a cutting-edge Meal Planner App for iOS, utilizing Swift and SwiftUI to provide users with a seamless meal planning experience. Integrated Google Firebase to enable real-time collaboration and data synchronization, ensuring that users can effortlessly plan meals with up-to-date information. Designed an intuitive and user-friendly interface using SwiftUI, enhancing the user experience and making meal planning a breeze.</p>
-            </div>
-    
-            <!-- Personal Portfolio Website -->
-            <div class="project">
-                <h3>Personal Portfolio Website</h3>
-                <p>Developed a personal portfolio website to showcase skills, projects, and achievements, enhancing self-branding and professional visibility. Implemented dynamic features using React for a seamless and interactive user experience. Designed an aesthetically pleasing and responsive user interface using HTML and CSS, ensuring accessibility across various devices. Included project showcase, resume download, and a contact form to facilitate communication with potential employers and collaborators. Hosted the website on GitHub, utilizing Git for version control.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="internship" class="section">
-        <div class="container">
-            <h2>Internship Experience</h2>
-            <!-- Internship content -->
-        
-            <!-- Amazon SDE Internship -->
-            <div class="internship">
-                <h3>Software Engineer Intern</h3>
-                <p><strong>Company:</strong> Amazon</p>
-                <p><strong>Location:</strong> Seattle, WA</p>
-                <p><strong>Duration:</strong> June 2023 - August 2023</p>
-                <p>
-                    Developed a REST API using Java, Smithy, AWS Lambda, AWS API Gateway, AWS S3, and TypeScript, significantly
-                    enhancing the efficiency of bill computation and simulation processes by 50%. Designed and implemented a
-                    robust Validation class, automating 85% of manual tasks in the regression testing process. This not only
-                    ensured precision and accuracy but also expedited overall project timelines. Innovated an extensible
-                    validator, reducing processing time by an impressive 60% without compromising on the highest quality
-                    standards. This innovation contributed to a more agile and scalable software development lifecycle.
-                </p>
+        <section id="internship" class="section">
+            <div class="container">
+                <h2 class="section-title">Internship Experience</h2>
+                <div class="internship">
+                    <h3>Software Engineer Intern</h3>
+                    <p><strong>Company:</strong> Amazon Web Services</p>
+                    <p><strong>Location:</strong> Seattle, WA</p>
+                    <p><strong>Duration:</strong> June 2023 - August 2023</p>
+                    <ul>
+                        <li>Engineered a REST API using Java, Smithy, AWS Lambda, AWS API Gateway, AWS S3, and TypeScript, resulting in a 50% increase in bill computation and simulation efficiency.</li>
+                        <li>Developed a comprehensive Validation class that automated 85% of manual regression testing tasks, ensuring precision and significantly reducing project timelines.</li>
+                        <li>Implemented an extensible validator using Java and AWS, which reduced processing time by 60% while maintaining high-quality standards, contributing to a more agile and scalable development lifecycle.</li>
+                    </ul>
+                </div>
             </div>
-        
-            <!-- Add more internship entries as needed -->
-        </div>
-    </section>
+            <div class="container">
+                <h2 class="section-title">Internship Experience</h2>
+                <div class="internship">
+                    <h3>Software Engineer Intern</h3>
+                    <p><strong>Company:</strong> Amazon Web Services</p>
+                    <p><strong>Location:</strong> Seattle, WA</p>
+                    <p><strong>Duration:</strong> May 2024 - August 2024</p>
+                    <ul>
+                        <li>Developed a website using React, JavaScript, and Cloudscape to enable customers to create and execute custom simulations for their AWS bills, significantly improving user experience and operational efficiency.</li>
+                        <li>Integrated RESTful APIs to connect UI components with the backend, leveraging AWS S3 for data storage and retrieval, and DynamoDB for managing simulation information, which streamlined data operations and enhanced overall functionality.</li>
+                        <li>Collaborated with customers and product managers to gather requirements, leading to a solution that met all user needs and significantly enhanced the usability of the simulation service.</li>
+            </div>
+        </section>
 
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Contact</h2>
-            <!-- Contact content -->
-            <p>Let's connect! Feel free to reach out to me via email: avinash.paluri@yahoo.com</p>
-            <h2>Resume</h2>
-            <p>Download my resume to learn more about my skills and experiences.</p>
-            <a href="finalResume.pdf" download="AvinashPaluri_Resume.pdf" class="resume-button">Download Resume</a>
-        </div>
-    </section>
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+                <p class="section-text">Let's connect! Feel free to reach out to me via email:</p>
+                <a href="mailto:avinash.paluri@yahoo.com" class="btn btn-secondary">avinash.paluri@yahoo.com</a>
+                <h3 class="section-subtitle">Resume</h3>
+                <p class="section-text">Download my resume to learn more about my skills and experiences.</p>
+                <a href="AvinashPaluri_Resume.pdf" download="AvinashPaluri_Resume.pdf" class="btn btn-primary">Download Resume</a>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Avinash Paluri - Web Developer</p>
+            <p>&copy; 2024 Avinash Paluri - Software Developer</p>
             <ul class="social-icons">
-                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                <li><a href="#"><i class="fab fa-github"></i></a></li>
+                <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                <li><a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
             </ul>
         </div>
     </footer>
