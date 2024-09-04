@@ -34,6 +34,7 @@ function Projects() {
         minHeight: '100vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        backgroundColor: 'darkgray', // Fallback color
         transition: 'background-image 2s ease-in-out',
       }}
     >
