@@ -1,35 +1,65 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AppBar, Toolbar, Button, IconButton, Typography, Container } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { motion } from 'framer-motion';
 
 function Header() {
-  const [darkMode, setDarkMode] = React.useState(false);
+  const theme = useTheme();
+  const navigate = useNavigate();
+  
+  // State to store the cursor position
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle('dark');
+  // Handle cursor move event
+  const handleMouseMove = (event) => {
+    setCursorPos({ x: event.clientX, y: event.clientY });
   };
 
   return (
-    <header className="bg-gray-800 dark:bg-gray-700 text-white shadow-lg">
-      <div className="container mx-auto flex justify-between items-center py-4 px-6">
-        <Link to="/" className="text-2xl font-bold">
-          Avinash Paluri
-        </Link>
-        <nav className="space-x-4">
-          <Link to="/" className="hover:underline">Home</Link>
-          <Link to="/projects" className="hover:underline">Projects</Link>
-          <Link to="/resume" className="hover:underline">Resume</Link>
-          <Link to="/contact" className="hover:underline">Contact</Link>
-        </nav>
-        <button
-          onClick={toggleDarkMode}
-          className="p-2 rounded-full bg-gray-700 dark:bg-gray-600 hover:bg-gray-600 dark:hover:bg-gray-500 focus:outline-none"
-        >
-          {darkMode ? <FaSun size={18} /> : <FaMoon size={18} />}
-        </button>
-      </div>
-    </header>
+    <AppBar position="static" color="primary" onMouseMove={handleMouseMove}>
+      <Container>
+        <Toolbar disableGutters>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Avinash Paluri
+          </Typography>
+          {['/', '/projects', '/resume', '/contact'].map((path, index) => (
+            <motion.div
+              key={index}
+              initial={{ x: 0, y: 0 }}
+              whileHover={{
+                x: Math.min(
+                  Math.max((cursorPos.x - window.innerWidth / 2) / 20, -10),
+                  10
+                ),
+                y: Math.min(
+                  Math.max((cursorPos.y - window.innerHeight / 2) / 20, -10),
+                  10
+                ),
+                scale: 1.05
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              style={{ margin: '0 8px' }}
+            >
+              <Button
+                onClick={() => navigate(path)}
+                color="inherit"
+                sx={{ position: 'relative', overflow: 'hidden' }}
+              >
+                {path === '/' ? 'Home' : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
+              </Button>
+            </motion.div>
+          ))}
+          <IconButton
+            sx={{ ml: 1 }}
+            onClick={theme.toggleColorMode}
+            color="inherit"
+          >
+            {/* Add your icon here */}
+          </IconButton>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
 

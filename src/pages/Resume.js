@@ -1,48 +1,108 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { gsap } from 'gsap';
+import { Container, Typography, List, ListItem, ListItemText, Box, Paper, Button } from '@mui/material';
+
+const backgrounds = [
+  'https://img.freepik.com/free-vector/black-background-with-blue-purple-wave-design_483537-4450.jpg?size=626&ext=jpg',
+  'https://img.freepik.com/free-vector/dark-blue-background-with-purple-blue-wave_483537-4449.jpg?size=626&ext=jpg'
+];
 
 function Resume() {
+  useEffect(() => {
+    let currentIndex = 0;
+    const changeBackground = () => {
+      currentIndex = (currentIndex + 1) % backgrounds.length;
+      gsap.to('.background', {
+        backgroundImage: backgrounds[currentIndex],
+        duration: 2,
+        ease: 'power2.inOut',
+      });
+    };
+
+    const interval = setInterval(changeBackground, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section>
-      <h2 className="text-3xl font-bold mb-6 text-center">Resume</h2>
-      <div className="space-y-4">
-        <div>
-          <h3 className="text-2xl font-semibold">Experience</h3>
-          <ul className="list-disc list-inside">
-            <li>
-              <strong>Job Title</strong> at <em>Company Name</em> (Year - Year)
-            </li>
-            {/* Add more experiences */}
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-2xl font-semibold">Education</h3>
-          <ul className="list-disc list-inside">
-            <li>
-              <strong>Degree</strong> in <em>Field of Study</em> from <em>University Name</em> (Year - Year)
-            </li>
-            {/* Add more education */}
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-2xl font-semibold">Skills</h3>
-          <ul className="list-disc list-inside">
-            <li>JavaScript, React, Node.js</li>
-            <li>HTML, CSS, Tailwind CSS</li>
-            <li>Git, GitHub, CI/CD</li>
-            {/* Add more skills */}
-          </ul>
-        </div>
-        <div className="text-center mt-4">
-          <a
-            href="/resume.pdf"
-            download
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+    <Box
+      className="background"
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundColor: 'darkgray', // Fallback color
+        transition: 'background-image 2s ease-in-out',
+        padding: 4,
+      }}
+    >
+      <Container maxWidth="md">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <Paper
+            elevation={3}
+            sx={{
+              padding: 4,
+              borderRadius: 2,
+              backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            }}
           >
-            Download Resume
-          </a>
-        </div>
-      </div>
-    </section>
+            <Typography variant="h3" gutterBottom align="center">
+              My Resume
+            </Typography>
+
+            <Typography variant="h5" gutterBottom>
+              Previous Internships
+            </Typography>
+            <List>
+              <ListItem>
+                <ListItemText
+                  primary="Software Development Engineer at Amazon Web Services"
+                  secondary="June 2023 - August 2023 | Seattle, WA"
+                />
+              </ListItem>
+              <ListItem>
+                <ListItemText
+                  primary="Software Development Engineer at Amazon Web Services"
+                  secondary="May 2024 - August 2024 | Seattle, WA"
+                />
+              </ListItem>
+              {/* Add more experience items here */}
+            </List>
+
+            <Typography variant="h5" gutterBottom>
+              Education
+            </Typography>
+            <List>
+              <ListItem>
+                <ListItemText
+                  primary="Bachelor of Science in Computer Science, Bachelor of Arts in Data Science"
+                  secondary="Rutgers University - New Brunswick | 2021 - 2024"
+                />
+              </ListItem>
+              {/* Add more education items here */}
+            </List>
+
+            <Box sx={{ textAlign: 'center', mt: 4 }}>
+              <Button
+                variant="contained"
+                color="primary"
+                href="/AvinashPaluri_Resume.pdf"
+                download="Avinash_Paluri_Resume.pdf"
+              >
+                Download Resume
+              </Button>
+            </Box>
+          </Paper>
+        </motion.div>
+      </Container>
+    </Box>
   );
 }
 

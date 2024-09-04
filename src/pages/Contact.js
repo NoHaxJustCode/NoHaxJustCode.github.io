@@ -1,73 +1,116 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { gsap } from 'gsap';
+import { Box, Typography, TextField, Button, Container } from '@mui/material';
+
+const backgrounds = [
+  'https://img.freepik.com/free-vector/black-background-with-blue-purple-wave-design_483537-4450.jpg?size=626&ext=jpg',
+  'https://img.freepik.com/free-vector/dark-blue-background-with-purple-blue-wave_483537-4449.jpg?size=626&ext=jpg'
+];
 
 function Contact() {
-  const [status, setStatus] = useState('');
+  useEffect(() => {
+    let currentIndex = 0;
+    const changeBackground = () => {
+      currentIndex = (currentIndex + 1) % backgrounds.length;
+      gsap.to('.background', {
+        backgroundImage: backgrounds[currentIndex],
+        duration: 2,
+        ease: 'power2.inOut',
+      });
+    };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('Submitting...');
-    const form = e.target;
-    const data = new FormData(form);
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: data,
-      headers: {
-        Accept: 'application/json',
-      },
-    });
-    if (response.ok) {
-      setStatus('Message sent!');
-      form.reset();
-    } else {
-      setStatus('Oops! Something went wrong.');
-    }
-  };
+    const interval = setInterval(changeBackground, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <section>
-      <h2 className="text-3xl font-bold mb-6 text-center">Contact</h2>
-      <form
-        onSubmit={handleSubmit}
-        action="https://formspree.io/f/mwpezojv"
-        method="POST"
-        className="max-w-lg mx-auto space-y-4"
-      >
-        <div>
-          <label className="block mb-1">Name</label>
-          <input
-            type="text"
-            name="name"
-            required
-            className="w-full border px-3 py-2 rounded"
-          />
-        </div>
-        <div>
-          <label className="block mb-1">Email</label>
-          <input
-            type="email"
-            name="email"
-            required
-            className="w-full border px-3 py-2 rounded"
-          />
-        </div>
-        <div>
-          <label className="block mb-1">Message</label>
-          <textarea
-            name="message"
-            required
-            className="w-full border px-3 py-2 rounded"
-            rows="5"
-          ></textarea>
-        </div>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+    <Box
+      className="background"
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        transition: 'background-image 2s ease-in-out',
+      }}
+    >
+      <Container maxWidth="sm">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            borderRadius: 2,
+            padding: 4,
+            boxShadow: 3,
+          }}
         >
-          Send
-        </button>
-        {status && <p className="mt-2">{status}</p>}
-      </form>
-    </section>
+          <Typography
+            variant="h4"
+            component="h1"
+            sx={{ color: 'white', textShadow: '2px 2px 8px rgba(0,0,0,0.7)', mb: 4, textAlign: 'center' }}
+          >
+            Contact Me
+          </Typography>
+          <form
+            action="https://formspree.io/f/mwpezojv"
+            method="POST"
+            style={{ width: '100%' }}
+          >
+            <TextField
+              label="Name"
+              name="name"
+              required
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              sx={{ mb: 2 }}
+              color="info"
+            />
+            <TextField
+              label="Email"
+              name="email"
+              type="email"
+              required
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              sx={{ mb: 2 }}
+              color="info"
+            />
+            <TextField
+              label="Message"
+              name="message"
+              required
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              multiline
+              rows={4}
+              sx={{ mb: 2 }}
+              color="info"
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              sx={{ mt: 2 }}
+            >
+              Send
+            </Button>
+          </form>
+        </motion.div>
+      </Container>
+    </Box>
   );
 }
 

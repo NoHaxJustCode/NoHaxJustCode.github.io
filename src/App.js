@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box } from '@mui/material';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -10,18 +11,18 @@ import Contact from './pages/Contact';
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+      <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Header />
-        <main className="flex-grow container mx-auto px-4 py-8">
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
-        </main>
+        </Box>
         <Footer />
-      </div>
+      </Box>
     </Router>
   );
 }

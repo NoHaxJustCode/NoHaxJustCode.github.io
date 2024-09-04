@@ -1,38 +1,66 @@
-import React from 'react';
-import ProjectCard from '../components/ProjectCard';
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { gsap } from 'gsap';
+import { Box, Typography } from '@mui/material';
 
-const projects = [
-  {
-    title: 'Project One',
-    description: 'Description of Project One.',
-    link: 'https://example.com/project-one',
-    repo: 'https://github.com/<your-username>/project-one',
-  },
-  {
-    title: 'Project Two',
-    description: 'Description of Project Two.',
-    link: 'https://example.com/project-two',
-    repo: 'https://github.com/<your-username>/project-two',
-  },
-  // Add more projects as needed
+const backgrounds = [
+  'https://img.freepik.com/free-vector/black-background-with-blue-purple-wave-design_483537-4450.jpg?size=626&ext=jpg',
+  'https://img.freepik.com/free-vector/dark-blue-background-with-purple-blue-wave_483537-4449.jpg?size=626&ext=jpg'
 ];
 
 function Projects() {
+  useEffect(() => {
+    let currentIndex = 0;
+    const changeBackground = () => {
+      currentIndex = (currentIndex + 1) % backgrounds.length;
+      gsap.to('.background', {
+        backgroundImage: backgrounds[currentIndex],
+        duration: 2,
+        ease: 'power2.inOut',
+      });
+    };
+
+    const interval = setInterval(changeBackground, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section>
-      <h2 className="text-3xl font-bold mb-6 text-center">Projects</h2>
-      <div className="grid md:grid-cols-2 gap-6">
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.title}
-            title={project.title}
-            description={project.description}
-            link={project.link}
-            repo={project.repo}
-          />
-        ))}
-      </div>
-    </section>
+    <Box
+      className="background"
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '100vh',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        transition: 'background-image 2s ease-in-out',
+      }}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <Typography
+          variant="h2"
+          component="h1"
+          sx={{ color: 'white', textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}
+        >
+          Projects
+        </Typography>
+        <Typography
+          variant="h5"
+          sx={{
+            mt: 3,
+            color: 'white',
+            textShadow: '1px 1px 5px rgba(0,0,0,0.5)',
+          }}
+        >
+          Discover the projects I've worked on.
+        </Typography>
+      </motion.div>
+    </Box>
   );
 }
 
