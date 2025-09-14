@@ -7,14 +7,18 @@
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@headlessui/react": "^1.7.18",
+    "@heroicons/react": "^2.1.1",
     "@mui/material": "^6.0.2",
     "framer-motion": "^11.5.2",
     "gsap": "^3.12.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.3.0",
+    "react-intersection-observer": "^9.5.3",
     "react-router-dom": "^6.14.1",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "pdf-parse": "^1.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
@@ -25,6 +29,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "extract:resume": "node scripts/read-resume.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",

@@ -1,67 +1,94 @@
-import React, { useEffect } from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { gsap } from 'gsap';
-import { Box, Typography } from '@mui/material';
+import ProjectCard from '../components/ProjectCard';
 
-const backgrounds = [
-  'https://img.freepik.com/free-vector/black-background-with-blue-purple-wave-design_483537-4450.jpg?size=626&ext=jpg',
-  'https://img.freepik.com/free-vector/dark-blue-background-with-purple-blue-wave_483537-4449.jpg?size=626&ext=jpg'
+const allProjects = [
+  {
+    title: 'Portfolio Revamp',
+    description: 'This very site: modern UI with React, Tailwind, and Framer Motion. Responsive, fast, accessible.',
+    tags: ['React', 'Tailwind', 'Framer Motion'],
+    repo: 'https://github.com/NoHaxJustCode/NoHaxJustCode.github.io',
+    link: 'https://NoHaxJustCode.github.io/',
+  },
+  {
+    title: 'Realtime Dashboard',
+    description: 'Realtime metrics dashboard with websockets and server-sent events.',
+    tags: ['TypeScript', 'React', 'Node.js'],
+    repo: '#',
+    link: '#',
+  },
+  {
+    title: 'AI Notes Assistant',
+    description: 'Intelligent note taking assistant with semantic search and tagging.',
+    tags: ['Python', 'Vector DB', 'React'],
+    repo: '#',
+    link: '#',
+  },
+  {
+    title: 'E-commerce Backend',
+    description: 'Scalable REST APIs with authentication, carts, and orders.',
+    tags: ['Node.js', 'Express', 'MongoDB'],
+    repo: '#',
+    link: '#',
+  },
 ];
 
-function Projects() {
-  useEffect(() => {
-    let currentIndex = 0;
-    const changeBackground = () => {
-      currentIndex = (currentIndex + 1) % backgrounds.length;
-      gsap.to('.background', {
-        backgroundImage: backgrounds[currentIndex],
-        duration: 2,
-        ease: 'power2.inOut',
-      });
-    };
+const allTags = Array.from(new Set(allProjects.flatMap((p) => p.tags))).sort();
 
-    const interval = setInterval(changeBackground, 5000);
-    return () => clearInterval(interval);
-  }, []);
+function Projects() {
+  const [activeTag, setActiveTag] = useState('All');
+
+  const filtered = useMemo(() => {
+    if (activeTag === 'All') return allProjects;
+    return allProjects.filter((p) => p.tags.includes(activeTag));
+  }, [activeTag]);
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
   return (
-    <Box
-      className="background"
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: '100vh',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundColor: 'darkgray', // Fallback color
-        transition: 'background-image 2s ease-in-out',
-      }}
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <Typography
-          variant="h2"
-          component="h1"
-          sx={{ color: 'white', textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}
+    <div className="pt-28 md:pt-32 pb-24 bg-white dark:bg-gray-900 min-h-screen">
+      <div className="container mx-auto px-6">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-10"
+          initial="hidden"
+          animate="show"
+          variants={fadeUp}
         >
-          Projects
-        </Typography>
-        <Typography
-          variant="h5"
-          sx={{
-            mt: 3,
-            color: 'white',
-            textShadow: '1px 1px 5px rgba(0,0,0,0.5)',
-          }}
-        >
-          Discover the projects I've worked on.
-        </Typography>
-      </motion.div>
-    </Box>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Projects</h1>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Discover a selection of my work. Each project is an opportunity to learn, build, and deliver value.
+          </p>
+        </motion.div>
+
+        {/* Filters */}
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+          {['All', ...allTags].map((tag) => (
+            <button
+              key={tag}
+              onClick={() => setActiveTag(tag)}
+              className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors ${
+                activeTag === tag
+                  ? 'bg-gradient-to-r from-primary to-secondary text-white border-transparent'
+                  : 'text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800'
+              }`}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filtered.map((p, i) => (
+            <ProjectCard key={p.title} {...p} delay={i * 0.05} />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
