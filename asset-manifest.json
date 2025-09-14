@@ -1,10 +1,14 @@
 {
   "files": {
-    "main.js": "/static/js/main.80076ed1.js",
+    "main.css": "/static/css/main.2977cf3c.css",
+    "main.js": "/static/js/main.3ea33b07.js",
+    "static/media/AvinashPaluri_Resume.pdf": "/static/media/AvinashPaluri_Resume.a4153541e20d76f0f62b.pdf",
     "index.html": "/index.html",
-    "main.80076ed1.js.map": "/static/js/main.80076ed1.js.map"
+    "main.2977cf3c.css.map": "/static/css/main.2977cf3c.css.map",
+    "main.3ea33b07.js.map": "/static/js/main.3ea33b07.js.map"
   },
   "entrypoints": [
-    "static/js/main.80076ed1.js"
+    "static/css/main.2977cf3c.css",
+    "static/js/main.3ea33b07.js"
   ]
 }
