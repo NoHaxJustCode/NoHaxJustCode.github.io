@@ -6,55 +6,111 @@ import resumePDF from './AvinashPaluri_Resume.pdf';
 const Resume = () => {
   // Default content (fallback if JSON not available)
   const [summary, setSummary] = useState(
-    'Full-stack engineer specializing in building scalable web apps with React, Node.js, and cloud-native services. Passionate about developer experience, performance, and crafting elegant UI/UX.'
+    'Software Engineer at Amazon Web Services (AWS). I build performant, scalable systems and intuitive product experiences across the stack. Passionate about developer experience, cloud-native architecture, and shipping delightful interfaces.'
   );
 
   const [experience, setExperience] = useState([
     {
-      role: 'Software Development Engineer Intern',
+      role: 'Software Development Engineer',
+      company: 'Amazon Web Services (AWS)',
+      location: 'Seattle, WA',
+      period: 'Feb 2025 – Present',
+      bullets: [
+        'Reduced infrastructure costs by 20% by migrating simulation workloads from ECS to a serverless architecture leveraging AWS Lambda and EC2.',
+        'Integrated generative AI with Bedrock, SageMaker, and Anthropic models to enable text-driven simulation creation, increasing customer adoption by 30%.',
+        'Delivered a production-ready Simulation Console that empowers customers to build and manage simulations through a no-code interface.',
+      ],
+    },
+    {
+      role: 'Software Engineer Intern',
       company: 'Amazon Web Services (AWS)',
       location: 'Seattle, WA',
       period: 'May 2024 – Aug 2024',
       bullets: [
-        'Built features for a distributed internal platform, reducing workflow latency by 25% via service-level optimizations.',
-        'Designed and implemented REST APIs and Lambda-based workflows; improved reliability with robust observability.',
-        'Collaborated with cross-functional teams to deliver secure, scalable solutions with clear documentation.',
+        'Developed a website using React, JavaScript, and AWS Cloudscape to enable customers to create and execute custom simulations for their AWS bills.',
+        'Integrated REST APIs with AWS S3 and DynamoDB, streamlining data operations and enhancing simulation functionality.',
+        'Collaborated with customers and PMs to deliver a solution that significantly improved usability.',
       ],
     },
     {
-      role: 'Software Development Engineer Intern',
+      role: 'Software Engineer Intern',
       company: 'Amazon Web Services (AWS)',
       location: 'Seattle, WA',
       period: 'Jun 2023 – Aug 2023',
       bullets: [
-        'Developed UI components in React and integrated with backend services to enable new customer-facing capabilities.',
-        'Improved page performance and load times by leveraging code-splitting and caching strategies.',
-        'Wrote unit and integration tests to ensure reliability and maintainability.',
+        'Engineered a REST API using Java, Smithy, AWS Lambda, API Gateway, and S3, boosting bill computation efficiency by 50%.',
+        'Automated 85% of regression testing by developing a Validation class in Java, reducing manual QA workload.',
+        'Implemented an extensible validator to reduce processing time by 60% while maintaining high-quality standards.',
       ],
     },
   ]);
 
   const [skills, setSkills] = useState([
-    { name: 'JavaScript / TypeScript' },
-    { name: 'React, Tailwind CSS, Framer Motion' },
-    { name: 'Node.js, Express' },
-    { name: 'Python' },
-    { name: 'AWS, Docker' },
-    { name: 'MongoDB, Postgres' },
+    { name: 'Java, Python, C/C++, SQL' },
+    { name: 'JavaScript, TypeScript, HTML/CSS, R, Go, Swift, Kotlin' },
+    { name: 'React, Node.js, Flask, JUnit, Spring Boot, Material-UI, SwiftUI, GSAP, Framer Motion, Unity' },
+    { name: 'AWS, GCP, Azure, Docker, Kubernetes, Jenkins, Terraform, GitHub Pages' },
+    { name: 'PyTorch, TensorFlow, Keras, scikit-learn, Pandas, NumPy, Matplotlib, Jupyter' },
+    { name: 'Android Studio, Roblox Studio, ARKit, Firebase, DynamoDB, S3' },
   ]);
 
   const [education, setEducation] = useState([
     {
+      school: 'Georgia Institute of Technology',
+      degree: 'Master of Science in Computer Science',
+      period: 'Spring 2026',
+      details: [],
+    },
+    {
       school: 'Rutgers University – New Brunswick',
-      degree: 'B.S. Computer Science, B.A. Data Science',
-      period: '2021 – 2024',
-      details: ['Graduated with strong focus on systems, data, and full-stack development.'],
+      degree: 'Bachelor of Science in Computer Science, Bachelor of Arts in Data Science',
+      period: 'Sept 2021 – Jan 2025',
+      details: [],
     },
   ]);
 
-  const [awards, setAwards] = useState([
-    { title: 'Dean’s List (multiple semesters)' },
-    { title: 'Hackathon finalist (selected events)' },
+  const [awards, setAwards] = useState([]);
+
+  // Projects (from resume) – displayed as a section in this page
+  const [resumeProjects] = useState([
+    {
+      title: 'Barcode Scanner App',
+      tech: 'Swift, SwiftUI, AVFoundation, UPCItemDB API',
+      period: 'Sep 2024 – Present',
+      bullets: [
+        'iOS app to scan barcodes, fetch product details via UPCItemDB, and display pricing and offers.',
+        'SwiftUI-based interface with real-time scanning feedback and product details view.',
+        'Implemented pagination for product offers and AVFoundation for high-performance scanning.',
+      ],
+    },
+    {
+      title: 'AI-Driven AR Tower Defense Game',
+      tech: 'Unity, C#, AR Foundation, Machine Learning',
+      period: 'Aug 2024 – Present',
+      bullets: [
+        'AR tower defense game; players place towers to defend resources against waves of enemies.',
+        'Integrated ML for difficulty prediction; dynamically adjusted spawns to match player skill with ~85% accuracy.',
+        'Applied CV to detect and align real-world surfaces, improving AR placement accuracy by ~40%.',
+      ],
+    },
+    {
+      title: 'Minesweeper AI',
+      tech: 'Python, PyTorch, scikit-learn',
+      period: 'Jan 2024 – Apr 2024',
+      bullets: [
+        'CNN that achieved ~95% accuracy in predicting mine locations.',
+        'Optimized training pipeline using scikit-learn and TensorDataset for efficiency.',
+      ],
+    },
+    {
+      title: 'Dagger Dash (Blade Ball Clone)',
+      tech: 'Roblox Studio, Lua',
+      period: 'Aug 2025 – Present',
+      bullets: [
+        'Developing a full-featured Roblox game clone with Lua scripts, UI, monetization, and analytics.',
+        'Implemented core mechanics, asset management, and player progression systems.',
+      ],
+    },
   ]);
 
   // Try loading parsed resume data if available
@@ -249,6 +305,42 @@ const Resume = () => {
                     ))}
                   </ul>
                 )}
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Projects */}
+        <section className="mb-12">
+          <motion.h2
+            className="text-2xl md:text-3xl font-bold mb-6"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            Projects
+          </motion.h2>
+          <div className="space-y-6">
+            {resumeProjects.map((p, idx) => (
+              <motion.div
+                key={idx}
+                className="p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-sm"
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                variants={fadeUp}
+              >
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
+                  <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{p.title}</h3>
+                  <div className="text-gray-500 dark:text-gray-400 text-sm">{p.period}</div>
+                </div>
+                <p className="text-primary font-medium mb-2">{p.tech}</p>
+                <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                  {p.bullets.map((b, i) => (
+                    <li key={i}>{b}</li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>

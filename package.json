@@ -29,6 +29,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "postbuild": "node scripts/copy-spa-fallback.js",
     "extract:resume": "node scripts/read-resume.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
